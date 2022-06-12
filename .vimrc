@@ -21,6 +21,8 @@ set completeopt-=preview
 set shiftwidth=4
 set rtp+=~/.vim/bundle/Vundle.vim
 set autoindent
+" default updatetime 4000ms is not good for async update
+set updatetime=100
 
 "----------/Sets---------------
 
@@ -34,6 +36,19 @@ Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-commentary'
+Plugin 'yuttie/comfortable-motion.vim'
+Plugin 'preservim/nerdtree'
+Plugin 'xuyuanp/nerdtree-git-plugin'
+Plugin 'mhinz/vim-signify'
+Plugin 'mg979/vim-visual-multi'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'prettier/vim-prettier'
+Plugin 'ap/vim-css-color'
+Plugin 'machakann/vim-highlightedyank'
+Plugin 'raimondi/delimitmate'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'sheerun/vim-polyglot'
 " -------/Plugins---------
 
 
@@ -76,6 +91,13 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
+
+
+"----------NERDTree mappings---------
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 if has("syntax")
   syntax on
