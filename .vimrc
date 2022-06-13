@@ -23,7 +23,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 set autoindent
 " default updatetime 4000ms is not good for async update
 set updatetime=100
-
+set clipboard=unnamedplus
 "----------/Sets---------------
 
 call vundle#begin()
@@ -48,7 +48,7 @@ Plugin 'ap/vim-css-color'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'raimondi/delimitmate'
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'sheerun/vim-polyglot'
+Plugin 'puremourning/vimspector'
 " -------/Plugins---------
 
 
@@ -98,6 +98,19 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+"---------vim-spector---------------
+nnoremap <Leader>dd :call vimspector#Launch()<CR>
+nnoremap <Leader>de :call vimspector#Reset()<CR>
+nnoremap <Leader>dc :call vimspector#Continue()<CR>
+
+nnoremap <Leader>dt :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
+
+nmap <Leader>dk <Plug>VimspectorRestart
+nmap <Leader>dh <Plug>VimspectorStepOut
+nmap <Leader>dl <Plug>VimspectorStepInto
+nmap <Leader>dj <Plug>VimspectorStepOver
 
 if has("syntax")
   syntax on
