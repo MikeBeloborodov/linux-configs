@@ -23,14 +23,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 set autoindent
 " default updatetime 4000ms is not good for async update
 set updatetime=100
-set clipboard=unnamedplus
+set clipboard=unnamedplu
 "----------/Sets---------------
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " -------Plugins----------
-Plugin 'ycm-core/YouCompleteMe'
 Plugin 'phanviet/vim-monokai-pro'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
@@ -47,8 +46,9 @@ Plugin 'prettier/vim-prettier'
 Plugin 'ap/vim-css-color'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'raimondi/delimitmate'
-Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'puremourning/vimspector'
+Plugin 'tpope/vim-surround'
+Plugin 'neoclide/coc.nvim'
 " -------/Plugins---------
 
 
@@ -111,6 +111,38 @@ nmap <Leader>dk <Plug>VimspectorRestart
 nmap <Leader>dh <Plug>VimspectorStepOut
 nmap <Leader>dl <Plug>VimspectorStepInto
 nmap <Leader>dj <Plug>VimspectorStepOver
+
+
+"-------------- COC ------------------
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+"-------------- /COC-----------------
 
 if has("syntax")
   syntax on
