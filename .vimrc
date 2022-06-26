@@ -3,6 +3,24 @@ runtime! debian.vim
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+"------------gruvbox colors--------------
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+" ------------------------------------------
 
 "------------Sets---------------
 set showmatch		" Show matching brackets.
@@ -24,13 +42,16 @@ set autoindent
 " default updatetime 4000ms is not good for async update
 set updatetime=100
 set clipboard=unnamedplu
+set tabstop=2
+set expandtab
 "----------/Sets---------------
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " -------Plugins----------
-Plugin 'phanviet/vim-monokai-pro'
+"Plugin 'sickill/vim-monokai'
+Plugin 'morhetz/gruvbox'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
@@ -48,14 +69,19 @@ Plugin 'machakann/vim-highlightedyank'
 Plugin 'raimondi/delimitmate'
 Plugin 'puremourning/vimspector'
 Plugin 'tpope/vim-surround'
-Plugin 'neoclide/coc.nvim'
+Plugin 'neoclide/coc.nvim' 
 " -------/Plugins---------
-
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-colorscheme monokai_pro
+syntax enable
+"colorscheme monokai
+"let g:gruvbox_(option) = '(value)'
+let g:gruvbox_italic=1
+colorscheme gruvbox
+set background=dark    " Setting dark mode
+
 let g:airline_theme='powerlineish'
 " air-line
 let g:airline_powerline_fonts = 1
@@ -143,6 +169,12 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 "-------------- /COC-----------------
+
+
+"------------key mappings------------
+inoremap {<cr> {<cr>}<c-o>O
+inoremap [<cr> [<cr>]<c-o>O
+inoremap (<cr> (<cr>)<c-o>O
 
 if has("syntax")
   syntax on
