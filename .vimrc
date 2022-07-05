@@ -31,7 +31,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " -------Plugins----------
-"Plugin 'sickill/vim-monokai'
+Plugin 'sickill/vim-monokai'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
@@ -49,7 +49,6 @@ Plugin 'machakann/vim-highlightedyank'
 Plugin 'raimondi/delimitmate'
 Plugin 'puremourning/vimspector'
 Plugin 'tpope/vim-surround'
-Plugin 'neoclide/coc.nvim' 
 " -------/Plugins---------
 
 call vundle#end()            " required
@@ -122,3 +121,4 @@ inoremap (<cr> (<cr>)<c-o>O
 if has("syntax")
   syntax on
 endif
+hi Normal guibg=NONE ctermbg=NONE
