@@ -2,3 +2,6 @@
 $df // To see partitions
 $umount /dev/sdc // To unmount partition
 $sudo mkfs.vfat -n 'USB2' -I /dev/sdc1 // To format
+
+#Get password
+openssl rand -base64 32
