@@ -1,6 +1,7 @@
 #Format usb
 $df // To see partitions
 $umount /dev/sdc // To unmount partition
+$sudo wipefs --all /dev/sdc1 // To wipe everything
 $sudo mkfs.vfat -n 'USB2' -I /dev/sdc1 // To format
 
 #Get password
