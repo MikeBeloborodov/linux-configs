@@ -108,6 +108,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias sdcb="sudo docker-compose build"
+alias sdcu="sudo docker-compose up"
+alias sdcud="sudo docker-compose up -d"
+alias sdcd="sudo docker-compose down"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
