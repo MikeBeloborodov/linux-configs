@@ -1,3 +1,7 @@
+"------------SET SETINGS------------
+set shiftwidth=4
+set tabstop=2
+"-------------END SET SETTINGS--------
 call plug#begin("~/.vim/plugged")
   " Plugin Section
 " 1st coc is used for autocompletion
